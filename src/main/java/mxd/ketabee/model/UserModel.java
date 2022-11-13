@@ -21,10 +21,7 @@ public class UserModel {
     private String password;
     private String firstname;
     private String lastname;
-    private String address;
-    private String phone;
-    private String mailid;
-    private String usertype;
+    private String email;
     private String role;
 
 }
