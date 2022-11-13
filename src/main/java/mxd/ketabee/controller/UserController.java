@@ -27,8 +27,8 @@ public class UserController {
         return serviceInstance.getUser(Id);
     }
 
-    @PostMapping("/adduser")
+    @PostMapping("/registration")
     ResponseEntity<?> getUser(@RequestBody UserModel user) {
-        return serviceInstance.addUser(user);
+        return serviceInstance.registerUser(user);
     }
 }
