@@ -1,12 +1,9 @@
 package mxd.ketabee.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import mxd.ketabee.model.BookModel;
@@ -18,17 +15,15 @@ public class BookService {
     @Autowired
     BookRepository repoInstance;
 
-    public ResponseEntity<?> getBookList() {
-        List<BookModel> bookList = new ArrayList<>();
-        repoInstance.findAll().forEach(bookList::add);
-        return ResponseEntity.ok().body(bookList);
+    public List<BookModel> getBookList() {
+        return repoInstance.findAll();
     }
 
-    public ResponseEntity<?> getBook(Long Id) {
-        return ResponseEntity.ok().body(repoInstance.findById(Id));
+    public Optional<BookModel> getBook(Long Id) {
+        return repoInstance.findById(Id);
     }
 
-    public ResponseEntity<?> addBook(BookModel book) {
-        return ResponseEntity.ok().body(repoInstance.save(book));
+    public BookModel addBook(BookModel book) {
+        return repoInstance.save(book);
     }
 }
