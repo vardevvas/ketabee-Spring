@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import mxd.ketabee.dto.inbound.RegistrationRequest;
 import mxd.ketabee.model.UserModel;
 import mxd.ketabee.repository.UserRepository;
 
@@ -31,9 +32,15 @@ public class UserService {
         return repoInstance.findByUsername(username);
     }
 
-    public String registerUser(UserModel user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        repoInstance.save(user);
+    public String registerUser(RegistrationRequest request) {
+        request.setPassword(passwordEncoder.encode(request.getPassword()));
+        UserModel user = new UserModel();
+        user.setFirstname(request.getFirstname());
+        user.setLastname(request.getLastname());
+        user.setEmail(request.getEmail());
+        user.setUsername(request.getUsername());
+        user.setPassword(request.getPassword());
+        user.setRole(request.getRole());
         return "user saved";
     }
 
