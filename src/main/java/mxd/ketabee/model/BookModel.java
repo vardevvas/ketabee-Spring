@@ -1,5 +1,6 @@
 package mxd.ketabee.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,14 +18,14 @@ public class BookModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    // @Column(name = "Name")
+    @Column(name = "Name")
     private String name;
-    // @Column(name = "QR Code")
+    @Column(name = "QRCode")
     private String barcode;
-    // @Column(name = "Author")
+    @Column(name = "Author")
     private String author;
-    // @Column(name = "Price")
+    @Column(name = "Price")
     private String price;
-    // @Column(name = "Quantity")
+    @Column(name = "Quantity")
     private String quantity;
 }

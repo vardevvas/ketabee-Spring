@@ -27,6 +27,10 @@ public class UserService {
         return repoInstance.findById(Id);
     }
 
+    public UserModel getUserByUsername(String username) {
+        return repoInstance.findByUsername(username);
+    }
+
     public String registerUser(UserModel user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         repoInstance.save(user);
