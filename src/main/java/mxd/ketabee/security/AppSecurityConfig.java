@@ -35,6 +35,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/login").permitAll().and()
                 .authorizeRequests().antMatchers("/refreshtoken").permitAll().and()
+                .authorizeRequests().antMatchers("/users").hasAnyAuthority("admin").and()
                 .authorizeRequests().anyRequest().authenticated().and()
                 .addFilter(new AuthenFilter(authenticationManagerBean()))
                 .addFilterBefore(new AuthorFilter(), UsernamePasswordAuthenticationFilter.class);

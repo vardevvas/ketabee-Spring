@@ -41,6 +41,7 @@ public class UserService {
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());
         user.setRole(request.getRole());
+        repoInstance.save(user);
         return "user saved";
     }
 
